@@ -1,7 +1,5 @@
 package com.ti.soap.documentsuploader.soap;
 
-import java.util.List;
-
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -28,22 +26,20 @@ public class WebServiceConfig extends WsConfigurerAdapter{
 		return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
 	}
 	
-	// /ws/courses.wsdl
-	// course-details.xsd use schema and generate wsdl
-	@Bean(name="courses")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema coursesSchema) {
+	@Bean(name="documents")
+	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema documentsSchema) {
 		DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
 		
-		definition.setPortTypeName("CoursePort");
-		definition.setTargetNamespace("http://www.documentsuploader.soap.ti.com/courses");
+		definition.setPortTypeName("DocumentPort");
+		definition.setTargetNamespace("http://www.documentsuploader.soap.ti.com/documents");
 		definition.setLocationUri("/ws");
-		definition.setSchema(coursesSchema);
+		definition.setSchema(documentsSchema);
 
 		return definition;
 	}
 	
 	@Bean
-	public XsdSchema coursesSchema()  {
-		return new SimpleXsdSchema(new ClassPathResource("course-details.xsd"));
+	public XsdSchema documentsSchema()  {
+		return new SimpleXsdSchema(new ClassPathResource("document-details.xsd"));
 	}
 }

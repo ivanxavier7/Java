@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.documentsuploader.soap.ti.com/documents"
+	xmlns:tns="http://www.documentsuploader.soap.ti.com/documents"
+	elementFormDefault="qualified">
+	
+	<xs:element name="GetDocumentDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetDocumentDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentDetails" type="tns:DocumentDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllDocumentsDetailsRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllDocumentsDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentDetails" type="tns:DocumentDetails"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteDocumentDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DeleteDocumentDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="Status">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCESS"></xs:enumeration>
+			<xs:enumeration value="FAILURE"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="DocumentDetails">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"></xs:element>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="description" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
