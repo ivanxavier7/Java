@@ -34,6 +34,40 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="CreateDocumentDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentDetails" type="tns:DocumentDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CreateDocumentDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UpdateDocumentDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentDetails" type="tns:DocumentDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="UpdateDocumentDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 	<xs:element name="DeleteDocumentDetailsRequest">
 		<xs:complexType>
@@ -63,7 +97,194 @@
 		<xs:sequence>
 			<xs:element name="id" type="xs:int"></xs:element>
 			<xs:element name="name" type="xs:string"></xs:element>
-			<xs:element name="description" type="xs:string"></xs:element>
+			<xs:element name="author" type="xs:string"></xs:element>
+			<xs:element name="publisher" type="xs:string"></xs:element>
+			<xs:element name="location" type="xs:string"></xs:element>
+			<xs:element name="pages" type="xs:int"></xs:element>
+			<xs:element name="type_id" type="xs:int"></xs:element>
+			<xs:element name="user_id" type="xs:int"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	
+	
+	<xs:element name="GetDocumentTypeDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetDocumentTypeDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentTypeDetails" type="tns:DocumentTypeDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllDocumentTypesDetailsRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllDocumentTypesDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentTypeDetails" type="tns:DocumentTypeDetails"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CreateDocumentTypeDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentTypeDetails" type="tns:DocumentTypeDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CreateDocumentTypeDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UpdateDocumentTypeDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentTypeDetails" type="tns:DocumentTypeDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="UpdateDocumentTypeDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteDocumentTypeDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DeleteDocumentTypeDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="DocumentTypeDetails">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"></xs:element>
+			<xs:element name="type" type="xs:string"></xs:element>
+			<xs:element name="format" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:element name="GetUserDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetUserDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllUsersDetailsRequest">
+		<xs:complexType>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetAllUsersDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CreateUserDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CreateUserDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UpdateUserDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="UpdateUserDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteUserDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DeleteUserDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			<!--  1 sucesso e 0 falha -->
+				<xs:element name="status" type="tns:Status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="UserDetails">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"></xs:element>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="type" type="xs:string"></xs:element>
+			<xs:element name="email" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>	
+	
 </xs:schema>

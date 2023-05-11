@@ -10,7 +10,6 @@ package com.ti.soap.documentsuploader.documents;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentDetails"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +35,27 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "documentDetails"
+    "id"
 })
-@XmlRootElement(name = "GetDocumentDetailsResponse")
-public class GetDocumentDetailsResponse {
+@XmlRootElement(name = "GetDocumentTypeDetailsRequest")
+public class GetDocumentTypeDetailsRequest {
 
-    @XmlElement(name = "DocumentDetails", required = true)
-    protected DocumentDetails documentDetails;
+    protected int id;
 
     /**
-     * Gets the value of the documentDetails property.
+     * Gets the value of the id property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DocumentDetails }
-     *     
      */
-    public DocumentDetails getDocumentDetails() {
-        return documentDetails;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the documentDetails property.
+     * Sets the value of the id property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DocumentDetails }
-     *     
      */
-    public void setDocumentDetails(DocumentDetails value) {
-        this.documentDetails = value;
+    public void setId(int value) {
+        this.id = value;
     }
 
 }

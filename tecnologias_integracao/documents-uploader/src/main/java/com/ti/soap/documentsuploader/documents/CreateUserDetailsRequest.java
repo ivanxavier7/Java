@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentDetails"/&gt;
+ *         &lt;element name="UserDetails" type="{http://www.documentsuploader.soap.ti.com/documents}UserDetails"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "documentDetails"
+    "userDetails"
 })
-@XmlRootElement(name = "GetDocumentDetailsResponse")
-public class GetDocumentDetailsResponse {
+@XmlRootElement(name = "CreateUserDetailsRequest")
+public class CreateUserDetailsRequest {
 
-    @XmlElement(name = "DocumentDetails", required = true)
-    protected DocumentDetails documentDetails;
+    @XmlElement(name = "UserDetails", required = true)
+    protected UserDetails userDetails;
 
     /**
-     * Gets the value of the documentDetails property.
+     * Gets the value of the userDetails property.
      * 
      * @return
      *     possible object is
-     *     {@link DocumentDetails }
+     *     {@link UserDetails }
      *     
      */
-    public DocumentDetails getDocumentDetails() {
-        return documentDetails;
+    public UserDetails getUserDetails() {
+        return userDetails;
     }
 
     /**
-     * Sets the value of the documentDetails property.
+     * Sets the value of the userDetails property.
      * 
      * @param value
      *     allowed object is
-     *     {@link DocumentDetails }
+     *     {@link UserDetails }
      *     
      */
-    public void setDocumentDetails(DocumentDetails value) {
-        this.documentDetails = value;
+    public void setUserDetails(UserDetails value) {
+        this.userDetails = value;
     }
 
 }

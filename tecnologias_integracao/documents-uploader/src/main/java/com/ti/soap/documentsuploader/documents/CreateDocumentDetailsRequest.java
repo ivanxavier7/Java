@@ -38,8 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "documentDetails"
 })
-@XmlRootElement(name = "GetDocumentDetailsResponse")
-public class GetDocumentDetailsResponse {
+@XmlRootElement(name = "CreateDocumentDetailsRequest")
+public class CreateDocumentDetailsRequest {
 
     @XmlElement(name = "DocumentDetails", required = true)
     protected DocumentDetails documentDetails;
