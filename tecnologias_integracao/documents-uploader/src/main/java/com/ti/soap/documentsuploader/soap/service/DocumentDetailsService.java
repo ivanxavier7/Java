@@ -39,6 +39,72 @@ public class DocumentDetailsService {
 		return null;
 	}
 	
+	// Find documents by Name
+	public List<Document> findByName(String name) {
+		List<Document> temp_documents = new ArrayList<>();
+		for(Document document:documents) {
+			if(document.getName().toLowerCase().contains(name.toLowerCase())) {
+				temp_documents.add(document);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find documents by Name
+	public List<Document> findByAuthor(String author) {
+		List<Document> temp_documents = new ArrayList<>();
+		for(Document document:documents) {
+			if(document.getAuthor().toLowerCase().contains(author.toLowerCase())) {
+				temp_documents.add(document);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find documents by Location
+	public List<Document> findByLocation(String location) {
+		List<Document> temp_documents = new ArrayList<>();
+		for(Document document:documents) {
+			if(document.getLocation().toLowerCase().contains(location.toLowerCase())) {
+				temp_documents.add(document);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find documents by Publisher
+	public List<Document> findByPublisher(String publisher) {
+		List<Document> temp_documents = new ArrayList<>();
+		for(Document document:documents) {
+			if(document.getPublisher().toLowerCase().contains(publisher.toLowerCase())) {
+				temp_documents.add(document);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find documents by User ID
+	public List<Document> findByUserId(int user_id) {
+		List<Document> temp_documents = new ArrayList<>();
+		for(Document document:documents) {
+			if(document.getUser_id() == user_id) {
+				temp_documents.add(document);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find documents by Type ID
+	public List<Document> findByTypeId(int type_id) {
+		List<Document> temp_documents = new ArrayList<>();
+		for(Document document:documents) {
+			if(document.getType_id() == type_id) {
+				temp_documents.add(document);
+			}
+		}
+		return temp_documents;
+	}
+	
 	// Find all documents
 	public List<Document> findAll() {
 		return documents;

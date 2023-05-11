@@ -8,6 +8,8 @@
 
 package com.ti.soap.documentsuploader.documents;
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentDetails"/&gt;
+ *         &lt;element name="DocumentDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentDetails" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,34 +40,39 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "documentDetails"
 })
-@XmlRootElement(name = "UpdateDocumentDetailsRequest")
-public class UpdateDocumentDetailsRequest {
+@XmlRootElement(name = "GetDocumentDetailsByLocationResponse")
+public class GetDocumentDetailsByLocationResponse {
 
     @XmlElement(name = "DocumentDetails", required = true)
-    protected DocumentDetails documentDetails;
+    protected List<DocumentDetails> documentDetails;
 
     /**
      * Gets the value of the documentDetails property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DocumentDetails }
-     *     
-     */
-    public DocumentDetails getDocumentDetails() {
-        return documentDetails;
-    }
-
-    /**
-     * Sets the value of the documentDetails property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the documentDetails property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DocumentDetails }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getDocumentDetails().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DocumentDetails }
+     * 
+     * 
      */
-    public void setDocumentDetails(DocumentDetails value) {
-        this.documentDetails = value;
+    public List<DocumentDetails> getDocumentDetails() {
+        if (documentDetails == null) {
+            documentDetails = new ArrayList<DocumentDetails>();
+        }
+        return this.documentDetails;
     }
 
 }

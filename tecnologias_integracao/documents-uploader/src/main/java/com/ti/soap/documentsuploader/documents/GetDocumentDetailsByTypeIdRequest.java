@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentTypeDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentTypeDetails"/&gt;
+ *         &lt;element name="type_id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,28 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "documentTypeDetails"
+    "typeId"
 })
-@XmlRootElement(name = "GetDocumentTypeDetailsResponse")
-public class GetDocumentTypeDetailsResponse {
+@XmlRootElement(name = "GetDocumentDetailsByTypeIdRequest")
+public class GetDocumentDetailsByTypeIdRequest {
 
-    @XmlElement(name = "DocumentTypeDetails", required = true)
-    protected DocumentTypeDetails documentTypeDetails;
+    @XmlElement(name = "type_id")
+    protected int typeId;
 
     /**
-     * Gets the value of the documentTypeDetails property.
+     * Gets the value of the typeId property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DocumentTypeDetails }
-     *     
      */
-    public DocumentTypeDetails getDocumentTypeDetails() {
-        return documentTypeDetails;
+    public int getTypeId() {
+        return typeId;
     }
 
     /**
-     * Sets the value of the documentTypeDetails property.
+     * Sets the value of the typeId property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DocumentTypeDetails }
-     *     
      */
-    public void setDocumentTypeDetails(DocumentTypeDetails value) {
-        this.documentTypeDetails = value;
+    public void setTypeId(int value) {
+        this.typeId = value;
     }
 
 }

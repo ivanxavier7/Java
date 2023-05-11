@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentTypeDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentTypeDetails"/&gt;
+ *         &lt;element name="publisher" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "documentTypeDetails"
+    "publisher"
 })
-@XmlRootElement(name = "GetDocumentTypeDetailsResponse")
-public class GetDocumentTypeDetailsResponse {
+@XmlRootElement(name = "GetDocumentDetailsByPublisherRequest")
+public class GetDocumentDetailsByPublisherRequest {
 
-    @XmlElement(name = "DocumentTypeDetails", required = true)
-    protected DocumentTypeDetails documentTypeDetails;
+    @XmlElement(required = true)
+    protected String publisher;
 
     /**
-     * Gets the value of the documentTypeDetails property.
+     * Gets the value of the publisher property.
      * 
      * @return
      *     possible object is
-     *     {@link DocumentTypeDetails }
+     *     {@link String }
      *     
      */
-    public DocumentTypeDetails getDocumentTypeDetails() {
-        return documentTypeDetails;
+    public String getPublisher() {
+        return publisher;
     }
 
     /**
-     * Sets the value of the documentTypeDetails property.
+     * Sets the value of the publisher property.
      * 
      * @param value
      *     allowed object is
-     *     {@link DocumentTypeDetails }
+     *     {@link String }
      *     
      */
-    public void setDocumentTypeDetails(DocumentTypeDetails value) {
-        this.documentTypeDetails = value;
+    public void setPublisher(String value) {
+        this.publisher = value;
     }
 
 }

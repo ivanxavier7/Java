@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentTypeDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentTypeDetails"/&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "documentTypeDetails"
+    "name"
 })
-@XmlRootElement(name = "GetDocumentTypeDetailsResponse")
-public class GetDocumentTypeDetailsResponse {
+@XmlRootElement(name = "GetDocumentDetailsByNameRequest")
+public class GetDocumentDetailsByNameRequest {
 
-    @XmlElement(name = "DocumentTypeDetails", required = true)
-    protected DocumentTypeDetails documentTypeDetails;
+    @XmlElement(required = true)
+    protected String name;
 
     /**
-     * Gets the value of the documentTypeDetails property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
-     *     {@link DocumentTypeDetails }
+     *     {@link String }
      *     
      */
-    public DocumentTypeDetails getDocumentTypeDetails() {
-        return documentTypeDetails;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the documentTypeDetails property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
-     *     {@link DocumentTypeDetails }
+     *     {@link String }
      *     
      */
-    public void setDocumentTypeDetails(DocumentTypeDetails value) {
-        this.documentTypeDetails = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
 }
