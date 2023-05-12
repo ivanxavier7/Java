@@ -218,6 +218,38 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="GetDocumentTypeDetailsByTypeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="type" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetDocumentTypeDetailsByTypeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentTypeDetails" type="tns:DocumentTypeDetails" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetDocumentTypeDetailsByFormatRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="format" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetDocumentTypeDetailsByFormatResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DocumentTypeDetails" type="tns:DocumentTypeDetails" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 	<xs:element name="GetAllDocumentTypesDetailsRequest">
 		<xs:complexType>
@@ -291,8 +323,7 @@
 			<xs:element name="format" type="xs:string"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	
-	
+		
 	<xs:element name="GetUserDetailsRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -305,6 +336,54 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="UserDetails" type="tns:UserDetails" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetUserDetailsByNameRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetUserDetailsByNameResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetUserDetailsByTypeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="type" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetUserDetailsByTypeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetUserDetailsByEmailRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="email" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetUserDetailsByEmailResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UserDetails" type="tns:UserDetails" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

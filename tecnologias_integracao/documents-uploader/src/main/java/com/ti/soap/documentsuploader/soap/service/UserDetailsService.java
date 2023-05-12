@@ -1,13 +1,12 @@
 package com.ti.soap.documentsuploader.soap.service;
 
-import java.io.Console;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ti.soap.documentsuploader.bean.DocumentType;
 import com.ti.soap.documentsuploader.bean.User;
 
 @Component
@@ -20,13 +19,13 @@ public class UserDetailsService {
 	private static List<User> users = new ArrayList<>();
 	
 	static {
-		User user1 = new User(1, "Spring", "10 Steps", "email");
+		User user1 = new User(1, "Ivan Xavier", "colaborador", "ivanxavier@ua.pt");
 		users.add(user1);
-		User user2 = new User(2, "Spring MVC", "10 Examples", "email");
+		User user2 = new User(2, "Jeffery T. Dunn", "colaborador", "jefferydunn@ua.pt");
 		users.add(user2);
-		User user3 = new User(3, "Spring Boot", "6k Students", "email");
+		User user3 = new User(3, "Ernest J. Kostka", "colaborador", "ernestkostka@ua.pt");
 		users.add(user3);
-		User user4 = new User(4, "Maven", "Most popular maven document in Udemy", "email");
+		User user4 = new User(4, "ESTGA", "empresarial", "estga.geral@ua.pt");
 		users.add(user4);
 	}
 	
@@ -38,6 +37,39 @@ public class UserDetailsService {
 			}
 		}
 		return null;
+	}
+	
+	// Find users by Name
+	public List<User> findByName(String name) {
+		List<User> temp_documents = new ArrayList<>();
+		for(User user:users) {
+			if(user.getName().toLowerCase().contains(name.toLowerCase())) {
+				temp_documents.add(user);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find users by Type
+	public List<User> findByType(String type) {
+		List<User> temp_documents = new ArrayList<>();
+		for(User user:users) {
+			if(user.getType().toLowerCase().contains(type.toLowerCase())) {
+				temp_documents.add(user);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find users by Email
+	public List<User> findByEmail(String email) {
+		List<User> temp_documents = new ArrayList<>();
+		for(User user:users) {
+			if(user.getEmail().toLowerCase().contains(email.toLowerCase())) {
+				temp_documents.add(user);
+			}
+		}
+		return temp_documents;
 	}
 	
 	// Find all Users

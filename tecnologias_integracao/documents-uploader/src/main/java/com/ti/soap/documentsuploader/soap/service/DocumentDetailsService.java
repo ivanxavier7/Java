@@ -1,6 +1,5 @@
 package com.ti.soap.documentsuploader.soap.service;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,14 +18,18 @@ public class DocumentDetailsService {
 	private static List<Document> documents = new ArrayList<>();
 	
 	static {
-		Document document1 = new Document(1, "Spring", "10 Steps", "10 Steps", "10 Steps", 3, 4, 5);
+		Document document1 = new Document(1, "Deep Learning With Python", "François Chollet", "Manning", "https://tanthiamhuat.files.wordpress.com/2018/03/deeplearningwithpython.pdf", 362, 1, 1);
 		documents.add(document1);
-		Document document2 = new Document(2, "Spring MVC", "10 Examples", "10 Examples", "10 Examples", 8, 6, 5);
+		Document document2 = new Document(2, "Relatório do trabalho prático na unidade curricular de TI", "Ernest J. Kostka", "", "Pasta partilhada do grupo_TI no OneDrive", 8, 2, 2);
 		documents.add(document2);
-		Document document3 = new Document(3, "Spring Boot", "6k Students", "6k Students", "6k Students", 12, 756, 3);
+		Document document3 = new Document(3, "Segurança em Redes Informáticas", "André Zúquete", "FCA", "Na biblioteca municipal de Aveiro", 468, 3, 1);
 		documents.add(document3);
-		Document document4 = new Document(4, "Maven", "Most popular maven document in Udemy", "6k Students", "6k Students", 234, 765, 2);
+		Document document4 = new Document(3, "Python Crash Course (2nd Edition) : A Hands-On, Project-Based Introduction to Programming", "Mattes, Eric", "No Starch Press", "Na biblioteca municipal de Aveiro", 544, 3, 3);
 		documents.add(document4);
+		Document document5 = new Document(4, "Poster do Web Summit", "", "", "No edifício da estga á frente da sala 5.1.13", 234, 4, 4);
+		documents.add(document5);
+		Document document6 = new Document(4, "Metasploit Penetration Testing Cookbook", "Abhinav Singh", "Packt", "http://www.it-docs.net/ddata/3788.pdf", 250, 3, 1);
+		documents.add(document6);
 	}
 	
 	// Find document by ID
@@ -50,7 +53,7 @@ public class DocumentDetailsService {
 		return temp_documents;
 	}
 	
-	// Find documents by Name
+	// Find documents by Author
 	public List<Document> findByAuthor(String author) {
 		List<Document> temp_documents = new ArrayList<>();
 		for(Document document:documents) {
@@ -126,7 +129,6 @@ public class DocumentDetailsService {
 	// Create document 
 	public Status create(int id, String name, String author, String publisher, String location, int pages, int type_id,
 			int user_id) {
-		System.out.println(id);
 		Document document = new Document(id, name, author, publisher, location, pages, type_id, user_id);
 		boolean documentExists = false;
 		

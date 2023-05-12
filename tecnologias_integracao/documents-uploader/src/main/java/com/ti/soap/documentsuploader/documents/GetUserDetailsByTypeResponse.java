@@ -27,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DocumentDetails" type="{http://www.documentsuploader.soap.ti.com/documents}DocumentDetails" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="UserDetails" type="{http://www.documentsuploader.soap.ti.com/documents}UserDetails" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,41 +38,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "documentDetails"
+    "userDetails"
 })
-@XmlRootElement(name = "GetDocumentDetailsByUserIdResponse")
-public class GetDocumentDetailsByUserIdResponse {
+@XmlRootElement(name = "GetUserDetailsByTypeResponse")
+public class GetUserDetailsByTypeResponse {
 
-    @XmlElement(name = "DocumentDetails", required = true)
-    protected List<DocumentDetails> documentDetails;
+    @XmlElement(name = "UserDetails", required = true)
+    protected List<UserDetails> userDetails;
 
     /**
-     * Gets the value of the documentDetails property.
+     * Gets the value of the userDetails property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the documentDetails property.
+     * This is why there is not a <CODE>set</CODE> method for the userDetails property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDocumentDetails().add(newItem);
+     *    getUserDetails().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DocumentDetails }
+     * {@link UserDetails }
      * 
      * 
      */
-    public List<DocumentDetails> getDocumentDetails() {
-        if (documentDetails == null) {
-            documentDetails = new ArrayList<DocumentDetails>();
+    public List<UserDetails> getUserDetails() {
+        if (userDetails == null) {
+            userDetails = new ArrayList<UserDetails>();
         }
-        return this.documentDetails;
+        return this.userDetails;
     }
 
 }
