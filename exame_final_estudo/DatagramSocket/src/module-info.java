@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author ivanx
+ *
+ */
+module DatagramSocket {
+}
