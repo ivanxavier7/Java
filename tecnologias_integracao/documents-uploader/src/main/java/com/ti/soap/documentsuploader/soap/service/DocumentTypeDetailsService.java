@@ -1,6 +1,5 @@
 package com.ti.soap.documentsuploader.soap.service;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,13 +18,13 @@ public class DocumentTypeDetailsService {
 	private static List<DocumentType> documentTypes = new ArrayList<>();
 	
 	static {
-		DocumentType documentType1 = new DocumentType(1, "Spring", "10 Steps");
+		DocumentType documentType1 = new DocumentType(1, "Digital", "PDF");
 		documentTypes.add(documentType1);
-		DocumentType documentType2 = new DocumentType(2, "Spring MVC", "10 Examples");
+		DocumentType documentType2 = new DocumentType(2, "Digital", "DOCX");
 		documentTypes.add(documentType2);
-		DocumentType documentType3 = new DocumentType(3, "Spring Boot", "6k Students");
+		DocumentType documentType3 = new DocumentType(3, "Físico", "A4");
 		documentTypes.add(documentType3);
-		DocumentType documentType4 = new DocumentType(4, "Maven", "Most popular maven document in Udemy");
+		DocumentType documentType4 = new DocumentType(4, "Físico", "A1");
 		documentTypes.add(documentType4);
 	}
 	
@@ -37,6 +36,28 @@ public class DocumentTypeDetailsService {
 			}
 		}
 		return null;
+	}
+	
+	// Find documents types by type
+	public List<DocumentType> findByType(String type) {
+		List<DocumentType> temp_documents = new ArrayList<>();
+		for(DocumentType documentType:documentTypes) {
+			if(documentType.getType().toLowerCase().contains(type.toLowerCase())) {
+				temp_documents.add(documentType);
+			}
+		}
+		return temp_documents;
+	}
+	
+	// Find documents types by format
+	public List<DocumentType> findByFormat(String format) {
+		List<DocumentType> temp_documents = new ArrayList<>();
+		for(DocumentType documentType:documentTypes) {
+			if(documentType.getFormat().toLowerCase().contains(format.toLowerCase())) {
+				temp_documents.add(documentType);
+			}
+		}
+		return temp_documents;
 	}
 	
 	// Find all document types

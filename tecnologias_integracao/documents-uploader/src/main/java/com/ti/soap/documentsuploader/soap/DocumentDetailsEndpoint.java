@@ -31,10 +31,32 @@ import com.ti.soap.documentsuploader.documents.GetAllDocumentsDetailsRequest;
 import com.ti.soap.documentsuploader.documents.GetAllDocumentsDetailsResponse;
 import com.ti.soap.documentsuploader.documents.GetAllUsersDetailsRequest;
 import com.ti.soap.documentsuploader.documents.GetAllUsersDetailsResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByAuthorRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByAuthorResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByLocationRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByLocationResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByNameRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByNameResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByPublisherRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByPublisherResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByTypeIdRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByTypeIdResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByUserIdRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentDetailsByUserIdResponse;
 import com.ti.soap.documentsuploader.documents.GetDocumentDetailsRequest;
 import com.ti.soap.documentsuploader.documents.GetDocumentDetailsResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentTypeDetailsByFormatRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentTypeDetailsByFormatResponse;
+import com.ti.soap.documentsuploader.documents.GetDocumentTypeDetailsByTypeRequest;
+import com.ti.soap.documentsuploader.documents.GetDocumentTypeDetailsByTypeResponse;
 import com.ti.soap.documentsuploader.documents.GetDocumentTypeDetailsRequest;
 import com.ti.soap.documentsuploader.documents.GetDocumentTypeDetailsResponse;
+import com.ti.soap.documentsuploader.documents.GetUserDetailsByEmailRequest;
+import com.ti.soap.documentsuploader.documents.GetUserDetailsByEmailResponse;
+import com.ti.soap.documentsuploader.documents.GetUserDetailsByNameRequest;
+import com.ti.soap.documentsuploader.documents.GetUserDetailsByNameResponse;
+import com.ti.soap.documentsuploader.documents.GetUserDetailsByTypeRequest;
+import com.ti.soap.documentsuploader.documents.GetUserDetailsByTypeResponse;
 import com.ti.soap.documentsuploader.documents.GetUserDetailsRequest;
 import com.ti.soap.documentsuploader.documents.GetUserDetailsResponse;
 import com.ti.soap.documentsuploader.documents.UpdateDocumentDetailsRequest;
@@ -51,6 +73,8 @@ import com.ti.soap.documentsuploader.soap.service.DocumentTypeDetailsService.Typ
 import com.ti.soap.documentsuploader.soap.service.UserDetailsService;
 import com.ti.soap.documentsuploader.soap.service.UserDetailsService.UserStatus;
 import com.ti.soap.documentsuploader.soap.exception.DocumentNotFoundException;
+import com.ti.soap.documentsuploader.soap.exception.DocumentTypeNotFoundException;
+import com.ti.soap.documentsuploader.soap.exception.UserNotFoundException;
 
 @Endpoint
 public class DocumentDetailsEndpoint {
@@ -67,18 +91,6 @@ public class DocumentDetailsEndpoint {
 	
 	// Documents
 	
-	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsRequest")
-	@ResponsePayload
-	public GetDocumentDetailsResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsRequest request) {
-		
-		Document document = service.findById(request.getId());
-		
-		if(document==null)
-			throw new DocumentNotFoundException("Invalid Document ID: " + request.getId());
-		
-		return mapDocumentDetails(document);
-	}
-
 	private GetDocumentDetailsResponse mapDocumentDetails(Document document) {
 		GetDocumentDetailsResponse response = new GetDocumentDetailsResponse();
 		
@@ -111,6 +123,156 @@ public class DocumentDetailsEndpoint {
 		documentDetails.setUserId(document.getUser_id());
 		
 		return documentDetails;
+	}
+	
+	private GetDocumentDetailsByNameResponse mapAllDocumentsDetailsByName(List<Document> documents) {
+		GetDocumentDetailsByNameResponse response = new GetDocumentDetailsByNameResponse();
+		
+		for(Document document:documents) {
+			DocumentDetails mapDocument = mapDocument(document);
+			response.getDocumentDetails().add(mapDocument);
+		}
+		
+		return response;
+	}
+	
+	private GetDocumentDetailsByAuthorResponse mapAllDocumentsDetailsByAuthor(List<Document> documents) {
+		GetDocumentDetailsByAuthorResponse response = new GetDocumentDetailsByAuthorResponse();
+		
+		for(Document document:documents) {
+			DocumentDetails mapDocument = mapDocument(document);
+			response.getDocumentDetails().add(mapDocument);
+		}
+		
+		return response;
+	}
+	
+	private GetDocumentDetailsByPublisherResponse mapAllDocumentsDetailsByPublisher(List<Document> documents) {
+		GetDocumentDetailsByPublisherResponse response = new GetDocumentDetailsByPublisherResponse();
+		
+		for(Document document:documents) {
+			DocumentDetails mapDocument = mapDocument(document);
+			response.getDocumentDetails().add(mapDocument);
+		}
+		
+		return response;
+	}
+	
+	private GetDocumentDetailsByUserIdResponse mapAllDocumentsDetailsByUserId(List<Document> documents) {
+		GetDocumentDetailsByUserIdResponse response = new GetDocumentDetailsByUserIdResponse();
+		
+		for(Document document:documents) {
+			DocumentDetails mapDocument = mapDocument(document);
+			response.getDocumentDetails().add(mapDocument);
+		}
+		
+		return response;
+	}
+	
+	private GetDocumentDetailsByTypeIdResponse mapAllDocumentsDetailsByTypeId(List<Document> documents) {
+		GetDocumentDetailsByTypeIdResponse response = new GetDocumentDetailsByTypeIdResponse();
+		
+		for(Document document:documents) {
+			DocumentDetails mapDocument = mapDocument(document);
+			response.getDocumentDetails().add(mapDocument);
+		}
+		
+		return response;
+	}
+	
+	private GetDocumentDetailsByLocationResponse mapAllDocumentsDetailsByLocation(List<Document> documents) {
+		GetDocumentDetailsByLocationResponse response = new GetDocumentDetailsByLocationResponse();
+		
+		for(Document document:documents) {
+			DocumentDetails mapDocument = mapDocument(document);
+			response.getDocumentDetails().add(mapDocument);
+		}
+		
+		return response;
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsRequest")
+	@ResponsePayload
+	public GetDocumentDetailsResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsRequest request) {
+		
+		Document document = service.findById(request.getId());
+		
+		if(document==null)
+			throw new DocumentNotFoundException("Invalid Document ID: " + request.getId());
+		
+		return mapDocumentDetails(document);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsByNameRequest")
+	@ResponsePayload
+	public GetDocumentDetailsByNameResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsByNameRequest request) {
+		
+		List<Document> documents = service.findByName(request.getName());
+		
+		if(documents==null)
+			throw new DocumentNotFoundException("Invalid Document Name: " + request.getName());
+		
+		return mapAllDocumentsDetailsByName(documents);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsByAuthorRequest")
+	@ResponsePayload
+	public GetDocumentDetailsByAuthorResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsByAuthorRequest request) {
+		
+		List<Document> documents = service.findByAuthor(request.getAuthor());
+		
+		if(documents==null)
+			throw new DocumentNotFoundException("Invalid Document Name: " + request.getAuthor());
+		
+		return mapAllDocumentsDetailsByAuthor(documents);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsByLocationRequest")
+	@ResponsePayload
+	public GetDocumentDetailsByLocationResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsByLocationRequest request) {
+		
+		List<Document> documents = service.findByLocation(request.getLocation());
+		
+		if(documents==null)
+			throw new DocumentNotFoundException("Invalid Document Name: " + request.getLocation());
+		
+		return mapAllDocumentsDetailsByLocation(documents);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsByPublisherRequest")
+	@ResponsePayload
+	public GetDocumentDetailsByPublisherResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsByPublisherRequest request) {
+		
+		List<Document> documents = service.findByAuthor(request.getPublisher());
+		
+		if(documents==null)
+			throw new DocumentNotFoundException("Invalid Document Name: " + request.getPublisher());
+		
+		return mapAllDocumentsDetailsByPublisher(documents);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsByUserIdRequest")
+	@ResponsePayload
+	public GetDocumentDetailsByUserIdResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsByUserIdRequest request) {
+		
+		List<Document> documents = service.findByUserId(request.getUserId());
+		
+		if(documents==null)
+			throw new DocumentNotFoundException("Invalid Document Name: " + request.getUserId());
+		
+		return mapAllDocumentsDetailsByUserId(documents);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentDetailsByTypeIdRequest")
+	@ResponsePayload
+	public GetDocumentDetailsByTypeIdResponse processDocumentDetailsRequest(@RequestPayload GetDocumentDetailsByTypeIdRequest request) {
+		
+		List<Document> documents = service.findByTypeId(request.getTypeId());
+		
+		if(documents==null)
+			throw new DocumentNotFoundException("Invalid Document Name: " + request.getTypeId());
+		
+		return mapAllDocumentsDetailsByTypeId(documents);
 	}
 	
 	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetAllDocumentsDetailsRequest")
@@ -184,18 +346,6 @@ public class DocumentDetailsEndpoint {
 	
 	//DocumentTypes
 	
-	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentTypeDetailsRequest")
-	@ResponsePayload
-	public GetDocumentTypeDetailsResponse processDocumentTypeDetailsRequest(@RequestPayload GetDocumentTypeDetailsRequest request) {
-		
-		DocumentType documentType = typeService.findById(request.getId());
-		
-		if(documentType==null)
-			throw new DocumentNotFoundException("Invalid Document ID: " + request.getId());
-		
-		return mapDocumentTypeDetails(documentType);
-	}
-	
 	private GetDocumentTypeDetailsResponse mapDocumentTypeDetails(DocumentType documentType) {
 		GetDocumentTypeDetailsResponse response = new GetDocumentTypeDetailsResponse();
 		
@@ -224,6 +374,64 @@ public class DocumentDetailsEndpoint {
 
 		
 		return documentTypeDetails;
+	}
+	
+	private GetDocumentTypeDetailsByTypeResponse mapAllDocumentTypesDetailsByType(List<DocumentType> documentTypes) {
+		GetDocumentTypeDetailsByTypeResponse response = new GetDocumentTypeDetailsByTypeResponse();
+		
+		for(DocumentType documentType:documentTypes) {
+			DocumentTypeDetails mapDocumentType = mapDocumentType(documentType);
+			response.getDocumentTypeDetails().add(mapDocumentType);
+		}
+		
+		return response;
+	}
+	
+	private GetDocumentTypeDetailsByFormatResponse mapAllDocumentTypesDetailsByFormat(List<DocumentType> documentTypes) {
+		GetDocumentTypeDetailsByFormatResponse response = new GetDocumentTypeDetailsByFormatResponse();
+		
+		for(DocumentType documentType:documentTypes) {
+			DocumentTypeDetails mapDocumentType = mapDocumentType(documentType);
+			response.getDocumentTypeDetails().add(mapDocumentType);
+		}
+		
+		return response;
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentTypeDetailsRequest")
+	@ResponsePayload
+	public GetDocumentTypeDetailsResponse processDocumentTypeDetailsRequest(@RequestPayload GetDocumentTypeDetailsRequest request) {
+		
+		DocumentType documentType = typeService.findById(request.getId());
+		
+		if(documentType==null)
+			throw new DocumentTypeNotFoundException("Invalid Document ID: " + request.getId());
+		
+		return mapDocumentTypeDetails(documentType);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentTypeDetailsByTypeRequest")
+	@ResponsePayload
+	public GetDocumentTypeDetailsByTypeResponse processDocumentDetailsRequest(@RequestPayload GetDocumentTypeDetailsByTypeRequest request) {
+		
+		List<DocumentType> documentTypes = typeService.findByType(request.getType());
+		
+		if(documentTypes==null)
+			throw new DocumentTypeNotFoundException("Invalid Document Type: " + request.getType());
+		
+		return mapAllDocumentTypesDetailsByType(documentTypes);
+	}
+
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetDocumentTypeDetailsByFormatRequest")
+	@ResponsePayload
+	public GetDocumentTypeDetailsByFormatResponse processDocumentDetailsRequest(@RequestPayload GetDocumentTypeDetailsByFormatRequest request) {
+		
+		List<DocumentType> documentTypes = typeService.findByFormat(request.getFormat());
+		
+		if(documentTypes==null)
+			throw new DocumentTypeNotFoundException("Invalid Document Type: " + request.getFormat());
+		
+		return mapAllDocumentTypesDetailsByFormat(documentTypes);
 	}
 	
 	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetAllDocumentTypesDetailsRequest")
@@ -288,18 +496,6 @@ public class DocumentDetailsEndpoint {
 	
 	// Users
 	
-	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetUsersDetailsRequest")
-	@ResponsePayload
-	public GetUserDetailsResponse processUsersDetailsRequest(@RequestPayload GetUserDetailsRequest request) {
-		
-		User user = userService.findById(request.getId());
-		
-		if(user==null)
-			throw new DocumentNotFoundException("Invalid Document ID: " + request.getId());
-		
-		return mapUserDetails(user);
-	}
-	
 	private GetUserDetailsResponse mapUserDetails(User user) {
 		GetUserDetailsResponse response = new GetUserDetailsResponse();
 		
@@ -328,6 +524,87 @@ public class DocumentDetailsEndpoint {
 		userNew.setEmail(user.getEmail());
 		
 		return userNew;
+	}
+	
+	private GetUserDetailsByNameResponse mapAllUsersDetailsByName(List<User> users) {
+		GetUserDetailsByNameResponse response = new GetUserDetailsByNameResponse();
+		
+		for(User user:users) {
+			UserDetails mapUser = mapUser(user);
+			response.getUserDetails().add(mapUser);
+		}
+		
+		return response;
+	}
+	
+	private GetUserDetailsByTypeResponse mapAllUsersDetailsByType(List<User> users) {
+		GetUserDetailsByTypeResponse response = new GetUserDetailsByTypeResponse();
+		
+		for(User user:users) {
+			UserDetails mapUser = mapUser(user);
+			response.getUserDetails().add(mapUser);
+		}
+		
+		return response;
+	}
+	
+	private GetUserDetailsByEmailResponse mapAllUsersDetailsByEmail(List<User> users) {
+		GetUserDetailsByEmailResponse response = new GetUserDetailsByEmailResponse();
+		
+		for(User user:users) {
+			UserDetails mapUser = mapUser(user);
+			response.getUserDetails().add(mapUser);
+		}
+		
+		return response;
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetUserDetailsRequest")
+	@ResponsePayload
+	public GetUserDetailsResponse processUsersDetailsRequest(@RequestPayload GetUserDetailsRequest request) {
+		
+		User user = userService.findById(request.getId());
+		
+		if(user==null)
+			throw new UserNotFoundException("Invalid Document ID: " + request.getId());
+		
+		return mapUserDetails(user);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetUserDetailsByNameRequest")
+	@ResponsePayload
+	public GetUserDetailsByNameResponse processUserDetailsRequest(@RequestPayload GetUserDetailsByNameRequest request) {
+		
+		List<User> users = userService.findByName(request.getName());
+		
+		if(users==null)
+			throw new UserNotFoundException("Invalid User Name: " + request.getName());
+		
+		return mapAllUsersDetailsByName(users);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetUserDetailsByTypeRequest")
+	@ResponsePayload
+	public GetUserDetailsByTypeResponse processUserDetailsRequest(@RequestPayload GetUserDetailsByTypeRequest request) {
+		
+		List<User> users = userService.findByType(request.getType());
+		
+		if(users==null)
+			throw new UserNotFoundException("Invalid User Type: " + request.getType());
+		
+		return mapAllUsersDetailsByType(users);
+	}
+	
+	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetUserDetailsByEmailRequest")
+	@ResponsePayload
+	public GetUserDetailsByEmailResponse processUserDetailsRequest(@RequestPayload GetUserDetailsByEmailRequest request) {
+		
+		List<User> users = userService.findByEmail(request.getEmail());
+		
+		if(users==null)
+			throw new UserNotFoundException("Invalid User Email: " + request.getEmail());
+		
+		return mapAllUsersDetailsByEmail(users);
 	}
 	
 	@PayloadRoot(namespace = "http://www.documentsuploader.soap.ti.com/documents", localPart = "GetAllUsersDetailsRequest")
