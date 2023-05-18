@@ -1,0 +1,44 @@
+No Postman
+
+Select the POST
+Invoke the URL http://localhost:8080/student.
+Select the Body
+Select he Content-Type JSON (raw/json).
+Insert the data. We have inserted the following data in the body:
+
+{  
+    "id": "001",  
+    "age": "23",  
+    "name": "Amit",  
+    "email": "amit@yahoo.co.in"  
+}   
+{  
+    "id": "002",  
+    "age": "24",  
+    "name": "Vadik",  
+    "email": "vadik@yahoo.co.in"  
+}   
+{  
+    "id": "003",  
+    "age": "21",  
+    "name": "Prateek",  
+    "email": "prateek@yahoo.co.in"  
+}   
+{  
+    "id": "004",  
+    "age": "25",  
+    "name": "Harsh",  
+    "email": "harsh@yahoo.co.in"  
+}   
+{  
+    "id": "005",  
+    "age": "24",  
+    "name": "Swarit",  
+    "email": "Swarit@yahoo.co.in"  
+}
+
+agora podes aceder na consola
+http://localhost:8080/h2-console
+
+http://localhost:8080/student
+http://localhost:8080/student/5
